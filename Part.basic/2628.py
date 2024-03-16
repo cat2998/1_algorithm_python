@@ -26,6 +26,7 @@ elif len(rows) > 1:
     width = max(b-rows[-1], max_rowslist, rows[0])
 else:
     width = b
+    
 if len(cols) == 1:
     height = max(a-cols[0], cols[0])
 elif len(cols) > 1:
