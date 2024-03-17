@@ -3,6 +3,7 @@ def dupl_test(col, j):
         return False
     return True
 
+
 def findQ(col):
     global idx, sols, chk
     if col == n:
@@ -10,7 +11,7 @@ def findQ(col):
         idx += 1
         return
     for i in range(n):
-        if chk[i] == 1: 
+        if chk[i] == 1:
             continue
         temp[col] = i
         chk_pre = True
@@ -23,6 +24,7 @@ def findQ(col):
             chk[i] = 1
             findQ(col+1)
             chk[i] = 0
+
 
 idx = 0
 n = int(input())

@@ -1,37 +1,31 @@
-# 블럭 옮길때마다 2^(n-1)씩 더해주면됨
-# n커질떄마다 2^n씩 행렬간이동함
-# 계속 돌다가 cr 만족하면 idx출력
-def reached(c, r):
-    if init_pos[0] == c and init_pos[1] == r:
-        return True
-    False
+# # 블럭 옮길때마다 2^(n-1)씩 더해주면됨
+# # n커질떄마다 2^n씩 행렬간이동함
+# # 계속 돌다가 cr 만족하면 idx출력
+# # 크게 나눠서 4등분하고 0123 더해주기
+# (2**2n   - 1 ) % 2 = x
+# (2**2n - 1) - 2**(2(n-1)-1) ... =y
+# 큰걸 나누고 x(n-1)등해서 1될떄까지해서 x1구하고 y1구하고
+
+# 나머지 63-16-32=18
+# 나머지 15-8-4=3
+
+def Z_loop(n, r, c):
+    if n == 0:
+        return 0
+    print(n, r, c)
+    # r은 2로내려가니까 *2 해줌, n이 차수 힌트줌
+    # 자신의 2x2행렬에서 0번째 값 + 자기자릿값 = 자기수 나옴
+    # 366이면 233 111 해서 0 + 2*0 + 4*zloop(2,3,3)=4*(1+ 2+ 4*zloop(111)=4*(3)=
+    # 4*(4*(1+2+4*(3)))
+    # 기본수생각하면 도니ㅡㄴ데
+    # 기본 4자리 + 4*2^n(같은칸내에선 2(n-1)**2씩올라감)
+    return (c % 2) + 2 * (r % 2) + 4 * Z_loop(n - 1, r//2, c//2)
+
+# nCr로 받으면안대나 뭐냐?
 
 
-def move_micro(c, r):
-    global idx
-    for j in range(3):
-        init_pos[0] += move_z[j][0]
-        init_pos[1] += move_z[j][1]
-        idx += 1
-        if reached(c, r):
-            return idx
+n, r, c = map(int, input().split())
+print(Z_loop(n, r, c))
 
-
-def move_macro(n, c, r):
-    global division
-    for i in range(n-1):
-        if n == 0:
-            move_micro(c, r)
-        else:
-            division[n] += 1
-            n=int(n/2)
-            move_macro(n, c, r)
-
-
-idx = 0
-n, c, r = map(int, (input()).split())
-division = [0]*n
-init_pos = [0, 0]
-move_z = [[1, 0], [-1, 1], [1, 0]]
-move_micro(c, r)
-print(idx)
+# 음수 될떄까지 계속 2^n빼주기
+# 가까운 2^n찾아서 ex) 55=3+ 52=4* 13=1+4*3
