@@ -13,7 +13,7 @@ def printQueen():
 def queen(i):
     cnt = 0
     for j in range(n):
-        if  flag_a[j] == False and flag_b[i + j] == False and flag_c[i - j + (n - 1)] == False:
+        if flag_a[j] == False and flag_b[i + j] == False and flag_c[i - j + (n - 1)] == False:
             pos[i] = j
             if i == n - 1:
                 # printQueen()
