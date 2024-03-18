@@ -1,7 +1,7 @@
 def quick_sort(arr):
     def sort(low, high):
         if high <= low:
-            return
+            return 
 
         mid = part(low, high)
         sort(low, mid - 1)
