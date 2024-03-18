@@ -8,7 +8,6 @@ cities = [
 ]
 
 
-
 ans = sys.maxsize
 def traveling(x, y):
     global cost, ans
@@ -26,7 +25,9 @@ def traveling(x, y):
         if cities[y][i] and not visited[i]:
             visited[i] = True
             cost += cities[y][i]
+
             traveling(y, i)
+            
             visited[i] = False
             cost -= cities[y][i]
 
@@ -36,8 +37,10 @@ for i in range(n):
         if cities[i][j]:
             start = i
             cost = cities[i][j]
+
             visited = [False]*n
             visited[j] = True
+            
             traveling(i, j)
 
 print(ans)

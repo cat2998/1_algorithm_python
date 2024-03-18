@@ -42,3 +42,13 @@ def partition(n, x, y):
     partition(n/2, x + n/2, y + n/2)
 
 partition(2**N, 0, 0)
+
+
+# n, r, c = map(int, input().split())
+# a, p = 0, 1
+# for i in range(n):
+#     a += p * (2 * (r % 2) + (c % 2))
+#     p *= 4
+#     r //= 2
+#     c //= 2
+# print(a)
