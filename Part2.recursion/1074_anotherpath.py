@@ -1,9 +1,9 @@
 # dx dy 찾아보기 [0 0 1 1] [0 1 0 1]
 # dxdy 용법 dfs 핦 대
 
+    # x랑 y에 sqn 더하면 밖으로나감 ..
 def z_find(x, y, sqn):
     global cnt
-    # x랑 y에 sqn 더하면 밖으로나감 ..
     if not (x <= r < x+sqn and y <= c < y+sqn):
         cnt += sqn**2
         return
