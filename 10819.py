@@ -18,13 +18,10 @@ def calc():
     return result
 
 
-def backtrack(n):
+def backtrack():
     global res
     if len(ans) == N:
         res = max(res, calc())
-        return
-
-    if n >= N:
         return
     
     for i in range(N):
@@ -32,10 +29,10 @@ def backtrack(n):
             used[i] = True
             ans.append(arr[i])
             
-            backtrack(n+1)
+            backtrack()
 
             used[i] = False
             ans.pop()
 
-backtrack(0)
+backtrack()
 print(res)
